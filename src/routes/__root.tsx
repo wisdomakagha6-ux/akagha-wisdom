@@ -9,6 +9,8 @@ import {
 } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
+import { ThemeProvider } from "@/context/ThemeContext";
+import Cursor from "@/components/Cursor";
 
 function NotFoundComponent() {
   return (
@@ -113,7 +115,10 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Outlet />
+      <ThemeProvider>
+        <Cursor />
+        <Outlet />
+      </ThemeProvider>
     </QueryClientProvider>
   );
 }
