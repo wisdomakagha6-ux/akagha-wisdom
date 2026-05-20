@@ -1,0 +1,57 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap');
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-border: var(--border);
+  --color-muted: var(--muted);
+  --color-text: var(--text);
+  --color-accent: var(--accent);
+  --font-head: "Space Grotesk", sans-serif;
+  --font-body: Inter, sans-serif;
+}
+
+:root {
+  --bg: #0a0a0a;
+  --surface: #141414;
+  --border: rgba(255, 255, 255, 0.07);
+  --muted: rgba(255, 255, 255, 0.36);
+  --text: #f0f0f0;
+  --accent: #EB5E28;
+  --accent-10: rgba(235, 94, 40, 0.10);
+  --accent-30: rgba(235, 94, 40, 0.30);
+}
+
+[data-theme="light"] {
+  --bg: #F5F0EB;
+  --surface: #EDEAE6;
+  --border: rgba(0, 0, 0, 0.08);
+  --muted: rgba(0, 0, 0, 0.40);
+  --text: #1a1a1a;
+  --accent: #EB5E28;
+  --accent-10: rgba(235, 94, 40, 0.10);
+  --accent-30: rgba(235, 94, 40, 0.30);
+}
+
+@media (min-width: 1024px) {
+  * { cursor: none !important; }
+}
+
+::selection {
+  background: #EB5E28;
+  color: #ffffff;
+}
+
+html, body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: Inter, sans-serif;
+  transition: background-color 0.35s ease, color 0.35s ease;
+}
+
+@layer base {
+  * { border-color: var(--border); }
+}
