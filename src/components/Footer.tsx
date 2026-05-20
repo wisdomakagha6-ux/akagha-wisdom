@@ -32,8 +32,16 @@ export default function Footer() {
           ))}
         </ul>
       </div>
-      <div className="md:col-span-3 pt-8 border-t flex flex-wrap justify-between gap-4 text-[12px]" style={{ borderColor: 'var(--border)', color: 'var(--muted)' }}>
+      <div className="md:col-span-3 pt-8 border-t flex flex-wrap items-center justify-between gap-4 text-[12px]" style={{ borderColor: 'var(--border)', color: 'var(--muted)' }}>
         <span>© 2026 Studio. All rights reserved.</span>
+        <a
+          href="/source.zip"
+          download
+          className="btn-slick inline-flex items-center gap-2 px-5 py-2 border font-head text-[11px] uppercase tracking-[0.12em]"
+          style={{ borderColor: 'var(--border)', color: 'var(--text)' }}
+        >
+          <span>↓ Download source</span>
+        </a>
         <span>Made deliberately.</span>
       </div>
     </footer>

@@ -57,15 +57,13 @@ export default function Pricing() {
               </ul>
               <a
                 href={`/#contact?service=${encodeURIComponent(t.service)}`}
-                className="text-center py-3 border font-head text-sm font-medium transition-colors"
+                className="btn-slick text-center py-3 border font-head text-sm font-medium"
                 style={{
                   borderColor: t.recommended ? '#EB5E28' : 'var(--border)',
                   color: t.recommended ? '#EB5E28' : 'var(--text)',
                 }}
-                onMouseEnter={e => { if (t.recommended) { e.currentTarget.style.background = '#EB5E28'; e.currentTarget.style.color = '#fff' } }}
-                onMouseLeave={e => { if (t.recommended) { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#EB5E28' } }}
               >
-                Select {t.name} →
+                <span>Select {t.name} →</span>
               </a>
             </motion.div>
           )

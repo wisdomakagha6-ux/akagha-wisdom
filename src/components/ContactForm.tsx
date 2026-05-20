@@ -90,12 +90,10 @@ export default function ContactForm() {
           </div>
           <a
             href="https://cal.com/yourname"
-            className="inline-flex items-center gap-3 px-8 py-4 border font-head text-sm transition-colors"
+            className="btn-slick inline-flex items-center gap-3 px-8 py-4 border font-head text-sm"
             style={{ borderColor: 'var(--border)', color: 'var(--text)', borderRadius: 0 }}
-            onMouseEnter={e => (e.currentTarget.style.borderColor = '#EB5E28')}
-            onMouseLeave={e => (e.currentTarget.style.borderColor = 'var(--border)')}
           >
-            <span>📞</span> Book a 30-min call
+            <span>📞 Book a 30-min call</span>
           </a>
         </motion.div>
 
@@ -164,12 +162,9 @@ export default function ContactForm() {
             <motion.button
               variants={fadeUp}
               type="submit"
-              className="w-full py-5 font-head font-medium text-sm tracking-[-0.01em] border transition-colors mt-8"
-              style={{ background: '#EB5E28', color: '#fff', borderColor: '#EB5E28', borderRadius: 0 }}
-              onMouseEnter={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#EB5E28' }}
-              onMouseLeave={e => { e.currentTarget.style.background = '#EB5E28'; e.currentTarget.style.color = '#fff' }}
+              className="btn-slick-solid w-full py-5 font-head font-medium text-sm tracking-[-0.01em] border mt-8"
             >
-              Send Message →
+              <span>Send Message →</span>
             </motion.button>
           </motion.form>
         )}

@@ -55,3 +55,52 @@ html, body {
 @layer base {
   * { border-color: var(--border); }
 }
+
+/* Slick button: slide-in fill on hover */
+.btn-slick {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition: color 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.btn-slick::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--btn-slick-fill, #EB5E28);
+  transform: translateX(-101%);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: -1;
+}
+.btn-slick:hover::before { transform: translateX(0); }
+.btn-slick:hover { color: var(--btn-slick-hover, #fff) !important; border-color: #EB5E28 !important; }
+.btn-slick > * { transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1); }
+.btn-slick:hover > * { transform: translateX(4px); }
+
+/* Solid variant: starts filled, on hover slides empty/inverts */
+.btn-slick-solid {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: #EB5E28 !important;
+  color: #fff !important;
+  border-color: #EB5E28 !important;
+  transition: color 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.btn-slick-solid::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--bg);
+  transform: translateX(101%);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: -1;
+}
+.btn-slick-solid:hover::before { transform: translateX(0); }
+.btn-slick-solid:hover { color: #EB5E28 !important; }
+.btn-slick-solid > * { transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1); }
+.btn-slick-solid:hover > * { transform: translateX(4px); }
+
+/* Modal */
+.qq-backdrop { background: rgba(0,0,0,0.6); backdrop-filter: blur(6px); }
+[data-theme="light"] .qq-backdrop { background: rgba(20,20,20,0.4); }
