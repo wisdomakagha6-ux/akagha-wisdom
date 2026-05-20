@@ -17,21 +17,16 @@ export default function CtaStrip() {
         <div className="flex flex-wrap items-center justify-center gap-4">
           <a
             href="/#contact"
-            className="inline-flex items-center gap-3 px-10 py-4 font-head text-sm font-medium border transition-colors"
-            style={{ background: '#EB5E28', color: '#fff', borderColor: '#EB5E28', borderRadius: 0 }}
-            onMouseEnter={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#EB5E28' }}
-            onMouseLeave={e => { e.currentTarget.style.background = '#EB5E28'; e.currentTarget.style.color = '#fff' }}
+            className="btn-slick-solid inline-flex items-center gap-3 px-10 py-4 font-head text-sm font-medium border"
           >
-            Start a Project →
+            <span>Start a Project →</span>
           </a>
           <a
             href="https://cal.com/yourname"
-            className="inline-flex items-center gap-3 px-10 py-4 font-head text-sm font-medium border transition-colors"
-            style={{ borderColor: 'var(--border)', color: 'var(--muted)', borderRadius: 0 }}
-            onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.3)'; e.currentTarget.style.color = 'var(--text)' }}
-            onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.color = 'var(--muted)' }}
+            className="btn-slick inline-flex items-center gap-3 px-10 py-4 font-head text-sm font-medium border"
+            style={{ borderColor: 'var(--border)', color: 'var(--muted)' }}
           >
-            Book a 30-min call
+            <span>Book a 30-min call</span>
           </a>
         </div>
       </motion.div>
