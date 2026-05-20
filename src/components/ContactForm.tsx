@@ -90,12 +90,10 @@ export default function ContactForm() {
           </div>
           <a
             href="https://cal.com/yourname"
-            className="inline-flex items-center gap-3 px-8 py-4 border font-head text-sm transition-colors"
+            className="btn-slick inline-flex items-center gap-3 px-8 py-4 border font-head text-sm"
             style={{ borderColor: 'var(--border)', color: 'var(--text)', borderRadius: 0 }}
-            onMouseEnter={e => (e.currentTarget.style.borderColor = '#EB5E28')}
-            onMouseLeave={e => (e.currentTarget.style.borderColor = 'var(--border)')}
           >
-            <span>📞</span> Book a 30-min call
+            <span>📞 Book a 30-min call</span>
           </a>
         </motion.div>
 
