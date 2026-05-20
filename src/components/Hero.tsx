@@ -38,12 +38,9 @@ export default function Hero() {
         <motion.div initial="hidden" animate="visible" variants={fadeUp} custom={3} className="mt-12">
           <a
             href="/#contact"
-            className="inline-flex items-center gap-3 px-8 py-4 font-head text-sm font-medium tracking-[-0.01em] border transition-colors"
-            style={{ background: '#EB5E28', color: '#fff', borderColor: '#EB5E28' }}
-            onMouseEnter={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#EB5E28' }}
-            onMouseLeave={e => { e.currentTarget.style.background = '#EB5E28'; e.currentTarget.style.color = '#fff' }}
+            className="btn-slick-solid inline-flex items-center gap-3 px-8 py-4 font-head text-sm font-medium tracking-[-0.01em] border"
           >
-            Start a project →
+            <span>Start a project →</span>
           </a>
         </motion.div>
       </div>
