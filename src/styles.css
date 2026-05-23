@@ -1,7 +1,7 @@
 @import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap");
 
 @theme inline {
   --color-bg: var(--bg);
@@ -20,40 +20,59 @@
   --border: rgba(255, 255, 255, 0.07);
   --muted: rgba(255, 255, 255, 0.36);
   --text: #f0f0f0;
-  --accent: #EB5E28;
-  --accent-10: rgba(235, 94, 40, 0.10);
-  --accent-30: rgba(235, 94, 40, 0.30);
+  --accent: #eb5e28;
+  --accent-10: rgba(235, 94, 40, 0.1);
+  --accent-30: rgba(235, 94, 40, 0.3);
 }
 
 [data-theme="light"] {
-  --bg: #F5F0EB;
-  --surface: #EDEAE6;
+  --bg: #f5f0eb;
+  --surface: #edeae6;
   --border: rgba(0, 0, 0, 0.08);
-  --muted: rgba(0, 0, 0, 0.40);
+  --muted: rgba(0, 0, 0, 0.4);
   --text: #1a1a1a;
-  --accent: #EB5E28;
-  --accent-10: rgba(235, 94, 40, 0.10);
-  --accent-30: rgba(235, 94, 40, 0.30);
+  --accent: #eb5e28;
+  --accent-10: rgba(235, 94, 40, 0.1);
+  --accent-30: rgba(235, 94, 40, 0.3);
 }
 
 @media (min-width: 1024px) {
-  * { cursor: none !important; }
+  * {
+    cursor: none !important;
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 ::selection {
-  background: #EB5E28;
+  background: #eb5e28;
   color: #ffffff;
 }
 
-html, body {
+html,
+body {
   background-color: var(--bg);
   color: var(--text);
   font-family: Inter, sans-serif;
-  transition: background-color 0.35s ease, color 0.35s ease;
+  transition:
+    background-color 0.35s ease,
+    color 0.35s ease;
 }
 
 @layer base {
-  * { border-color: var(--border); }
+  * {
+    border-color: var(--border);
+  }
 }
 
 /* Slick button: slide-in fill on hover */
@@ -67,24 +86,33 @@ html, body {
   content: "";
   position: absolute;
   inset: 0;
-  background: var(--btn-slick-fill, #EB5E28);
+  background: var(--btn-slick-fill, #eb5e28);
   transform: translateX(-101%);
   transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
   z-index: -1;
 }
-.btn-slick:hover::before { transform: translateX(0); }
-.btn-slick:hover { color: var(--btn-slick-hover, #fff) !important; border-color: #EB5E28 !important; }
-.btn-slick > * { transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1); }
-.btn-slick:hover > * { transform: translateX(4px); }
+.btn-slick:hover::before {
+  transform: translateX(0);
+}
+.btn-slick:hover {
+  color: var(--btn-slick-hover, #fff) !important;
+  border-color: #eb5e28 !important;
+}
+.btn-slick > * {
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.btn-slick:hover > * {
+  transform: translateX(4px);
+}
 
 /* Solid variant: starts filled, on hover slides empty/inverts */
 .btn-slick-solid {
   position: relative;
   overflow: hidden;
   isolation: isolate;
-  background: #EB5E28 !important;
+  background: #eb5e28 !important;
   color: #fff !important;
-  border-color: #EB5E28 !important;
+  border-color: #eb5e28 !important;
   transition: color 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .btn-slick-solid::before {
@@ -96,11 +124,24 @@ html, body {
   transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
   z-index: -1;
 }
-.btn-slick-solid:hover::before { transform: translateX(0); }
-.btn-slick-solid:hover { color: #EB5E28 !important; }
-.btn-slick-solid > * { transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1); }
-.btn-slick-solid:hover > * { transform: translateX(4px); }
+.btn-slick-solid:hover::before {
+  transform: translateX(0);
+}
+.btn-slick-solid:hover {
+  color: #eb5e28 !important;
+}
+.btn-slick-solid > * {
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.btn-slick-solid:hover > * {
+  transform: translateX(4px);
+}
 
 /* Modal */
-.qq-backdrop { background: rgba(0,0,0,0.6); backdrop-filter: blur(6px); }
-[data-theme="light"] .qq-backdrop { background: rgba(20,20,20,0.4); }
+.qq-backdrop {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(6px);
+}
+[data-theme="light"] .qq-backdrop {
+  background: rgba(20, 20, 20, 0.4);
+}

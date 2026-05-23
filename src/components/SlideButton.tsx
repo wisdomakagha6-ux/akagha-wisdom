@@ -1,32 +1,36 @@
-'use client'
-import { motion } from 'framer-motion'
-import { useState } from 'react'
+"use client";
+import { motion } from "framer-motion";
+import { useState } from "react";
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  direction?: 'left' | 'right'
-  as?: 'button' | 'a'
-  href?: string
-  children: React.ReactNode
+  direction?: "left" | "right";
+  as?: "button" | "a";
+  href?: string;
+  children: React.ReactNode;
 }
 
 export default function SlideButton({
-  direction = 'right',
-  as = 'button',
+  direction = "right",
+  as = "button",
   href,
   children,
-  className = '',
+  className = "",
   ...rest
 }: Props) {
-  const [hover, setHover] = useState(false)
-  const x = direction === 'right' ? (hover ? 4 : 0) : hover ? -4 : 0
+  const [hover, setHover] = useState(false);
+  const x = direction === "right" ? (hover ? 4 : 0) : hover ? -4 : 0;
 
   const inner = (
-    <motion.span animate={{ x }} transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }} className="inline-flex items-center justify-center w-full">
+    <motion.span
+      animate={{ x }}
+      transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+      className="inline-flex items-center justify-center w-full"
+    >
       {children}
     </motion.span>
-  )
+  );
 
-  if (as === 'a' || href) {
+  if (as === "a" || href) {
     return (
       <a
         href={href}
@@ -36,7 +40,7 @@ export default function SlideButton({
       >
         {inner}
       </a>
-    )
+    );
   }
   return (
     <button
@@ -47,5 +51,5 @@ export default function SlideButton({
     >
       {inner}
     </button>
-  )
+  );
 }

@@ -11,6 +11,15 @@ import {
 import appCss from "../styles.css?url";
 import { ThemeProvider } from "@/context/ThemeContext";
 import Cursor from "@/components/Cursor";
+import {
+  siteName,
+  siteDescription,
+  siteAuthor,
+  siteEmail,
+  organizationSchema,
+  websiteSchema,
+  serviceList,
+} from "@/lib/seo";
 
 function NotFoundComponent() {
   return (
@@ -74,19 +83,55 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: `${siteName} Creative Direction & Brand Identity Studio` },
+      { name: "description", content: siteDescription },
+      { name: "author", content: siteAuthor },
+      { property: "og:site_name", content: siteName },
+      { property: "og:title", content: `${siteName} Creative Direction & Brand Identity Studio` },
+      { property: "og:description", content: siteDescription },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:description", content: siteDescription },
+      { name: "theme-color", content: "#0a0a0a" },
+      { name: "theme-color", content: "#F5F0EB", media: "(prefers-color-scheme: light)" },
+      { name: "robots", content: "index, follow" },
     ],
     links: [
       {
+        rel: "icon",
+        href: "/favicon.svg",
+      },
+      {
         rel: "stylesheet",
         href: appCss,
+      },
+      {
+        rel: "preconnect",
+        href: "https://fonts.googleapis.com",
+      },
+      {
+        rel: "preconnect",
+        href: "https://fonts.gstatic.com",
+        crossOrigin: "anonymous",
+      },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify([
+          organizationSchema,
+          websiteSchema,
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            name: "Creative direction, brand identity, and product experience design",
+            serviceType: serviceList,
+            provider: {
+              "@type": "Organization",
+              name: siteName,
+            },
+          },
+        ]),
       },
     ],
   }),
