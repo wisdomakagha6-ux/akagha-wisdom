@@ -1,32 +1,25 @@
 "use client";
 import { motion } from "framer-motion";
 import { fadeIn, heroAccent, heroStage } from "@/lib/variants";
-import Hero3D from "./Hero3D";
+import HeroInteractiveBackground from "./HeroInteractiveBackground";
 import RollingButtonText from "./RollingButtonText";
+import { useTheme } from "@/context/ThemeContext";
 
 export default function Hero() {
+  const { theme } = useTheme();
+
   return (
     <section
       className="relative min-h-screen flex flex-col justify-center px-6 lg:px-10 pt-32 pb-24 overflow-hidden border-b"
-      style={{ borderColor: "var(--border)" }}
+      style={{ borderColor: "var(--border)", backgroundColor: theme === "dark" ? "#050505" : "#f5f0eb" }}
     >
-      <Hero3D />
-      <motion.div
-        initial="hidden"
-        animate="visible"
-        variants={fadeIn}
-        className="absolute inset-0 pointer-events-none opacity-[0.04] mix-blend-overlay"
-        style={{
-          backgroundImage:
-            'url("data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22120%22 height=%22120%22><filter id=%22n%22><feTurbulence baseFrequency=%220.9%22/></filter><rect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22/></svg>")',
-        }}
-      />
-      <div className="relative z-10 max-w-6xl">
+      <HeroInteractiveBackground />
+      <div className="relative z-10 max-w-6xl mx-auto flex flex-col items-center text-center">
         <motion.div
           initial="hidden"
           animate="visible"
           variants={heroStage}
-          className="flex items-center gap-2 mb-8 text-[12px] uppercase tracking-[0.12em]"
+          className="flex items-center justify-center gap-2 mb-8 text-[12px] uppercase tracking-[0.12em]"
           style={{ color: "var(--muted)" }}
         >
           <span className="w-2 h-2" style={{ background: "#EB5E28" }} />
@@ -37,7 +30,7 @@ export default function Hero() {
           animate="visible"
           variants={heroStage}
           custom={1}
-          className="font-head font-semibold leading-[0.95]"
+          className="font-head font-semibold leading-[0.95] text-center"
           style={{ fontSize: "clamp(52px, 7.5vw, 100px)", letterSpacing: "-0.035em" }}
         >
           Building visual identities
@@ -54,7 +47,7 @@ export default function Hero() {
           animate="visible"
           variants={heroStage}
           custom={2}
-          className="mt-10 max-w-md text-[15px] font-body"
+          className="mt-10 max-w-md mx-auto text-[15px] font-body text-center"
           style={{ color: "var(--muted)" }}
         >
           Independent creative director with 5+ years of experience crafting brand systems, visual
