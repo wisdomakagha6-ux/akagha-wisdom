@@ -1,0 +1,331 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&family=Instrument+Serif:ital@0;1&display=swap");
+@import "tailwindcss" source(none);
+@import "tw-animate-css";
+@source "../src";
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-border: var(--border);
+  --color-muted: var(--muted);
+  --color-text: var(--text);
+  --color-accent: var(--accent);
+  --font-head: "Space Grotesk", sans-serif;
+  --font-body: Inter, sans-serif;
+  --font-accent: "Instrument Serif", serif;
+}
+
+:root {
+  --bg: #0a0a0a;
+  --surface: #141414;
+  --border: rgba(255, 255, 255, 0.07);
+  --muted: rgba(255, 255, 255, 0.36);
+  --text: #f0f0f0;
+  --accent: #eb5e28;
+  --accent-10: rgba(235, 94, 40, 0.1);
+  --accent-30: rgba(235, 94, 40, 0.3);
+  --motion-micro: 160ms;
+  --motion-ui: 560ms;
+  --motion-cinematic: 1000ms;
+  --motion-cinematic-slow: 1240ms;
+  --motion-ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-theme="light"] {
+  --bg: #f5f0eb;
+  --surface: #edeae6;
+  --border: rgba(0, 0, 0, 0.08);
+  --muted: rgba(0, 0, 0, 0.4);
+  --text: #1a1a1a;
+  --accent: #eb5e28;
+  --accent-10: rgba(235, 94, 40, 0.1);
+  --accent-30: rgba(235, 94, 40, 0.3);
+}
+
+@media (min-width: 1024px) {
+  * {
+    cursor: none !important;
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+::selection {
+  background: #eb5e28;
+  color: #ffffff;
+}
+
+html,
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: Inter, sans-serif;
+  transition:
+    background-color var(--motion-ui) var(--motion-ease),
+    color var(--motion-ui) var(--motion-ease);
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.font-accent {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+}
+
+.page-shell {
+  animation: page-environment var(--motion-ui) var(--motion-ease) 200ms both;
+}
+
+@keyframes page-environment {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+}
+
+/* Slick button: slide-in fill on hover */
+.btn-slick {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transform: translateY(0);
+  transition:
+    color var(--motion-ui) var(--motion-ease),
+    transform var(--motion-micro) ease-out,
+    border-color var(--motion-ui) var(--motion-ease),
+    box-shadow var(--motion-ui) var(--motion-ease);
+}
+.btn-slick::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--btn-slick-fill, #eb5e28);
+  transform: translateX(-101%);
+  transition: transform var(--motion-ui) var(--motion-ease);
+  z-index: -1;
+}
+.btn-slick:hover::before {
+  transform: translateX(0);
+}
+.btn-slick:hover {
+  color: var(--btn-slick-hover, #fff) !important;
+  border-color: #eb5e28 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.16);
+}
+.btn-slick:active {
+  transform: translateY(1px);
+}
+.btn-slick > * {
+  transition: transform var(--motion-ui) var(--motion-ease);
+}
+.btn-slick:hover > * {
+  transform: translateX(4px);
+}
+
+/* Solid variant: starts filled, on hover slides empty/inverts */
+.btn-slick-solid {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: #eb5e28 !important;
+  color: #fff !important;
+  border-color: #eb5e28 !important;
+  transform: translateY(0);
+  transition:
+    color var(--motion-ui) var(--motion-ease),
+    transform var(--motion-micro) ease-out,
+    border-color var(--motion-ui) var(--motion-ease),
+    box-shadow var(--motion-ui) var(--motion-ease);
+}
+.btn-slick-solid::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--bg);
+  transform: translateX(101%);
+  transition: transform var(--motion-ui) var(--motion-ease);
+  z-index: -1;
+}
+.btn-slick-solid:hover::before {
+  transform: translateX(0);
+}
+.btn-slick-solid:hover {
+  color: #eb5e28 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.18);
+}
+.btn-slick-solid:active {
+  transform: translateY(1px);
+}
+.btn-slick-solid > * {
+  transition: transform var(--motion-ui) var(--motion-ease);
+}
+.btn-slick-solid:hover > * {
+  transform: translateX(4px);
+}
+
+.btn-roll-text-wrap {
+  display: inline-flex;
+}
+
+.btn-roll-text {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+.btn-roll-text__char {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  height: 1em;
+}
+
+.btn-roll-text__glyph {
+  display: block;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0) scaleY(1);
+  opacity: 1;
+  transition:
+    transform var(--btn-roll-duration, 0.34s) var(--motion-ease),
+    opacity 0.24s var(--motion-ease);
+  transition-delay: var(--btn-roll-delay, 0s);
+}
+
+.btn-roll-text__glyph--next {
+  position: absolute;
+  inset: 0;
+  transform: translate3d(0, 105%, 0) scaleY(0.92);
+  opacity: 0.72;
+}
+
+.btn-slick:hover .btn-roll-text__glyph--current,
+.btn-slick:focus-visible .btn-roll-text__glyph--current,
+.btn-slick-solid:hover .btn-roll-text__glyph--current,
+.btn-slick-solid:focus-visible .btn-roll-text__glyph--current,
+.link-roll:hover .btn-roll-text__glyph--current,
+.link-roll:focus-visible .btn-roll-text__glyph--current,
+.group:hover .link-roll-group .btn-roll-text__glyph--current,
+.group:focus-visible .link-roll-group .btn-roll-text__glyph--current {
+  transform: translate3d(0, -105%, 0) scaleY(0.94);
+  opacity: 0.72;
+}
+
+.btn-slick:hover .btn-roll-text__glyph--next,
+.btn-slick:focus-visible .btn-roll-text__glyph--next,
+.btn-slick-solid:hover .btn-roll-text__glyph--next,
+.btn-slick-solid:focus-visible .btn-roll-text__glyph--next,
+.link-roll:hover .btn-roll-text__glyph--next,
+.link-roll:focus-visible .btn-roll-text__glyph--next,
+.group:hover .link-roll-group .btn-roll-text__glyph--next,
+.group:focus-visible .link-roll-group .btn-roll-text__glyph--next {
+  transform: translate3d(0, 0, 0) scaleY(1);
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-shell {
+    animation: none;
+  }
+
+  .btn-roll-text__glyph {
+    transition: none;
+  }
+
+  .btn-slick,
+  .btn-slick-solid,
+  .motion-link,
+  .motion-card {
+    transition: none !important;
+  }
+
+  .btn-slick:hover .btn-roll-text__glyph--current,
+  .btn-slick:focus-visible .btn-roll-text__glyph--current,
+  .btn-slick-solid:hover .btn-roll-text__glyph--current,
+  .btn-slick-solid:focus-visible .btn-roll-text__glyph--current,
+  .btn-slick:hover .btn-roll-text__glyph--next,
+  .btn-slick:focus-visible .btn-roll-text__glyph--next,
+  .btn-slick-solid:hover .btn-roll-text__glyph--next,
+  .btn-slick-solid:focus-visible .btn-roll-text__glyph--next,
+  .link-roll:hover .btn-roll-text__glyph--current,
+  .link-roll:focus-visible .btn-roll-text__glyph--current,
+  .group:hover .link-roll-group .btn-roll-text__glyph--current,
+  .group:focus-visible .link-roll-group .btn-roll-text__glyph--current,
+  .link-roll:hover .btn-roll-text__glyph--next,
+  .link-roll:focus-visible .btn-roll-text__glyph--next,
+  .group:hover .link-roll-group .btn-roll-text__glyph--next,
+  .group:focus-visible .link-roll-group .btn-roll-text__glyph--next {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+/* Modal */
+.qq-backdrop {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(6px);
+}
+[data-theme="light"] .qq-backdrop {
+  background: rgba(20, 20, 20, 0.4);
+}
+
+.motion-link {
+  position: relative;
+  transition:
+    color var(--motion-ui) var(--motion-ease),
+    opacity var(--motion-ui) var(--motion-ease);
+}
+
+.motion-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.18rem;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--motion-ui) var(--motion-ease);
+}
+
+.motion-link:hover::after,
+.motion-link:focus-visible::after {
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .motion-card {
+    transition:
+      transform var(--motion-ui) var(--motion-ease),
+      box-shadow var(--motion-ui) var(--motion-ease),
+      opacity var(--motion-ui) var(--motion-ease),
+      border-color var(--motion-ui) var(--motion-ease);
+    will-change: transform, opacity;
+  }
+}
