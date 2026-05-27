@@ -220,8 +220,8 @@ export default function HeroInteractiveBackground() {
 
       // 2. Draw spotlight radial light background under cursor (dynamic color depending on theme)
       const radialGlow = ctx.createRadialGradient(mouseX, mouseY, 0, mouseX, mouseY, activeRadius);
-      radialGlow.addColorStop(0, isDark ? "rgba(235, 94, 40, 0.12)" : "rgba(235, 94, 40, 0.08)");
-      radialGlow.addColorStop(0.5, isDark ? "rgba(235, 94, 40, 0.035)" : "rgba(235, 94, 40, 0.02)");
+      radialGlow.addColorStop(0, isDark ? "rgba(235, 94, 40, 0.12)" : "rgba(235, 94, 40, 0.28)");
+      radialGlow.addColorStop(0.5, isDark ? "rgba(235, 94, 40, 0.035)" : "rgba(235, 94, 40, 0.08)");
       radialGlow.addColorStop(1, "rgba(235, 94, 40, 0)");
       ctx.fillStyle = radialGlow;
       ctx.beginPath();
@@ -243,7 +243,7 @@ export default function HeroInteractiveBackground() {
 
           if (midDist < activeRadius) {
             const proximity = (activeRadius - midDist) / activeRadius;
-            const lineOpacity = Math.pow(proximity, 2.2) * (isDark ? 0.16 : 0.22); // boosted opacity for light theme contrast
+            const lineOpacity = Math.pow(proximity, 2.2) * (isDark ? 0.16 : 0.42);
             
             ctx.strokeStyle = `rgba(235, 94, 40, ${lineOpacity})`;
             ctx.beginPath();
@@ -266,7 +266,7 @@ export default function HeroInteractiveBackground() {
 
           if (midDist < activeRadius) {
             const proximity = (activeRadius - midDist) / activeRadius;
-            const lineOpacity = Math.pow(proximity, 2.2) * (isDark ? 0.16 : 0.22);
+            const lineOpacity = Math.pow(proximity, 2.2) * (isDark ? 0.16 : 0.42);
 
             ctx.strokeStyle = `rgba(235, 94, 40, ${lineOpacity})`;
             ctx.beginPath();
@@ -331,13 +331,13 @@ export default function HeroInteractiveBackground() {
               }
               ctx.closePath();
 
-              // Transparent holographic fill (boosted face fill opacity on light theme)
-              const alphaFill = opacity * (isDark ? 0.38 : 0.44) * face.shade;
+              // Transparent holographic fill
+              const alphaFill = opacity * (isDark ? 0.38 : 0.58) * face.shade;
               ctx.fillStyle = `rgba(235, 94, 40, ${alphaFill})`;
               ctx.fill();
 
-              // Clean border stroke (boosted stroke opacity on light theme)
-              const alphaStroke = opacity * (isDark ? 1.3 : 1.5);
+              // Clean border stroke
+              const alphaStroke = opacity * (isDark ? 1.3 : 1.8);
               ctx.strokeStyle = `rgba(235, 94, 40, ${alphaStroke})`;
               ctx.lineWidth = 0.5;
               ctx.stroke();
@@ -360,7 +360,7 @@ export default function HeroInteractiveBackground() {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 w-full h-full pointer-events-none z-0 mix-blend-multiply dark:mix-blend-screen opacity-95"
+      className="absolute inset-0 w-full h-full pointer-events-none z-0 mix-blend-normal dark:mix-blend-screen opacity-95"
       style={{
         maskImage: "linear-gradient(to bottom, rgba(0,0,0,1) 82%, rgba(0,0,0,0) 100%)",
         WebkitMaskImage: "linear-gradient(to bottom, rgba(0,0,0,1) 82%, rgba(0,0,0,0) 100%)",
